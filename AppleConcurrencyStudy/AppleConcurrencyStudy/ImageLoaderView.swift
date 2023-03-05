@@ -103,9 +103,13 @@ class ImageLoaderView: UIView {
     private func setButtonAction() {
         self.button.addAction { [weak self] in
             guard let self = self else { return }
-            self.image = .Literal.placeHolder
-            self.delegate?.imageLoaderViewDidTouchUpInsideButton?(self)
+            self.didTouchUpInsideButton()
         }
+    }
+    
+    func didTouchUpInsideButton() {
+        self.image = .Literal.placeHolder
+        self.delegate?.imageLoaderViewDidTouchUpInsideButton?(self)
     }
     
 }

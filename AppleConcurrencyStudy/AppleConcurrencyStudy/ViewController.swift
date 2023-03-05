@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         
         self.setupLayout()
         self.setImageLoaderViewsDelegate()
+        self.setLoadAllButtonAction()
     }
     
     // MARK: - func
@@ -95,6 +96,14 @@ class ViewController: UIViewController {
         }
         // ArrangedSubViews - LoadAllImages Button
         self.stackView.addArrangedSubview(loadAllButton)
+    }
+    
+    private func setLoadAllButtonAction() {
+        self.loadAllButton.addAction { [weak self] in
+            self?.imageLoaderViews.forEach { imageLoaderView in
+                imageLoaderView.didTouchUpInsideButton()
+            }
+        }
     }
 
 }
