@@ -27,12 +27,16 @@ class ViewController: UIViewController {
         return stackView
     }()
     private var imageLoaderViews: [ImageLoaderView] = [
-        ImageLoaderView(),
-        ImageLoaderView(),
-        ImageLoaderView(),
-        ImageLoaderView(),
-        ImageLoaderView()
-    ]
+        ImageLoaderView(imageSource: .sky),
+        ImageLoaderView(imageSource: .river),
+        ImageLoaderView(imageSource: .jeju),
+        ImageLoaderView(imageSource: .coffee),
+        ImageLoaderView(imageSource: .bicycle)
+    ] {
+        didSet {
+            self.setImageLoaderViewsDelegate()
+        }
+    }
     private var loadAllButton: UIButton = {
         let button = UIButton()
         button.configuration = .filled()
@@ -47,6 +51,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.setupLayout()
+        self.setImageLoaderViewsDelegate()
     }
     
     // MARK: - func
@@ -71,6 +76,12 @@ class ViewController: UIViewController {
         
     }
     
+    private func setImageLoaderViewsDelegate() {
+        imageLoaderViews.forEach { imageLoaderView in
+            imageLoaderView.delegate = self
+        }
+    }
+    
     private func addSubViewsOfStackView() {
         // Clear StackView
         self.stackView.subviews.forEach { subview in
@@ -86,5 +97,18 @@ class ViewController: UIViewController {
         self.stackView.addArrangedSubview(loadAllButton)
     }
 
+}
+
+extension ViewController: ImageLoaderViewDelegate {
+    func imageLoaderViewDidTouchUpInsideButton(_ imageLoaderView: ImageLoaderView) {
+        let downloader = ImageDownloader()
+        if let url = imageLoaderView.imageSourceInfo.url {
+            downloader.download(url: url) { image in
+                DispatchQueue.main.async {
+                    imageLoaderView.image = image
+                }
+            }
+        }
+    }
 }
 

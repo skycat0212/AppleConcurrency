@@ -7,6 +7,11 @@
 
 import UIKit
 
+@objc
+protocol ImageLoaderViewDelegate: AnyObject {
+    @objc optional func imageLoaderViewDidTouchUpInsideButton(_ imageLoaderView: ImageLoaderView)
+}
+
 class ImageLoaderView: UIView {
 
     // MARK: -  property
@@ -17,6 +22,9 @@ class ImageLoaderView: UIView {
             self.imageView.image = self.image
         }
     }
+    
+    let imageSourceInfo: ImageSourceInfo
+    weak var delegate: ImageLoaderViewDelegate? = nil
     
     // MARK: - subview
     
@@ -32,6 +40,7 @@ class ImageLoaderView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView(image: nil)
         imageView.image = .Literal.placeHolder
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private let progressView: UIProgressView = {
@@ -50,10 +59,12 @@ class ImageLoaderView: UIView {
     
     // MARK: - init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(imageSource: ImageSourceInfo) {
+        self.imageSourceInfo = imageSource
+        super.init(frame: .zero)
         self.setupLayout()
         self.configUI()
+        self.setButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -87,6 +98,14 @@ class ImageLoaderView: UIView {
     
     private func configUI() {
         
+    }
+    
+    private func setButtonAction() {
+        self.button.addAction { [weak self] in
+            guard let self = self else { return }
+            self.image = .Literal.placeHolder
+            self.delegate?.imageLoaderViewDidTouchUpInsideButton?(self)
+        }
     }
     
 }
