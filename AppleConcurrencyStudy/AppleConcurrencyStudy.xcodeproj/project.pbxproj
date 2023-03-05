@@ -18,6 +18,7 @@
 		07AB847D29B30EBC00DCF005 /* AppleConcurrencyStudyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB847C29B30EBC00DCF005 /* AppleConcurrencyStudyUITestsLaunchTests.swift */; };
 		07AB848A29B30FC900DCF005 /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB848929B30FC900DCF005 /* ImageLoaderView.swift */; };
 		07AB848C29B45D2900DCF005 /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB848B29B45D2900DCF005 /* ImageLiteral.swift */; };
+		07AB849029B4742300DCF005 /* ImageSourceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AB848F29B4742300DCF005 /* ImageSourceInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		07AB847C29B30EBC00DCF005 /* AppleConcurrencyStudyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleConcurrencyStudyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		07AB848929B30FC900DCF005 /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
 		07AB848B29B45D2900DCF005 /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
+		07AB848F29B4742300DCF005 /* ImageSourceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourceInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				07AB845D29B30EBA00DCF005 /* ViewController.swift */,
 				07AB848929B30FC900DCF005 /* ImageLoaderView.swift */,
 				07AB848B29B45D2900DCF005 /* ImageLiteral.swift */,
+				07AB848F29B4742300DCF005 /* ImageSourceInfo.swift */,
 				07AB845F29B30EBA00DCF005 /* Main.storyboard */,
 				07AB846229B30EBC00DCF005 /* Assets.xcassets */,
 				07AB846429B30EBC00DCF005 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 				07AB848A29B30FC900DCF005 /* ImageLoaderView.swift in Sources */,
 				07AB845A29B30EBA00DCF005 /* AppDelegate.swift in Sources */,
 				07AB845C29B30EBA00DCF005 /* SceneDelegate.swift in Sources */,
+				07AB849029B4742300DCF005 /* ImageSourceInfo.swift in Sources */,
 				07AB848C29B45D2900DCF005 /* ImageLiteral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
